@@ -1,4 +1,13 @@
 *************************************************************************
+*                       Changes in version 1.5                          *
+*************************************************************************
+
+CHANGES
+    o the functions RNGseq, getRNG and setRNG have moved into a separate
+    package called rngtools to faciliate their use in other packages,
+    e.g., the NMF package.
+
+*************************************************************************
 *                       Changes in version 1.4.2                        *
 *************************************************************************
 
