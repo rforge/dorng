@@ -127,7 +127,7 @@
 \usepackage[minnames=1,maxnames=2]{biblatex}
 \AtEveryCitekey{\clearfield{url}}
 
-\bibliography{/tmp/tmp.UOE1cn2esW/doRNG/REFERENCES}
+\bibliography{/tmp/tmp.FsB5ZID5Yt/doRNG/REFERENCES}
 
 
 
@@ -143,7 +143,7 @@
 \newcommand{\dorng}{\code{\%dorng\%}\xspace}
 
 \title{Using the \code{doRNG} package\\
-{\small \Rpkg{doRNG} -- Version 1.4.8}}
+{\small \Rpkg{doRNG} -- Version 1.5}}
 \author{Renaud Gaujoux}
 
 \begin{document}
@@ -188,7 +188,7 @@ x <- \hlfunctioncall{foreach}(i = 1:5) %dopar% \{
 \hlfunctioncall{unlist}(x)
 \end{alltt}
 \begin{verbatim}
-## [1] 1.057 2.340 3.052 4.005 5.695
+## [1] 1.703 2.694 3.313 4.540 5.440
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -602,9 +602,9 @@ pid
 \end{alltt}
 \begin{verbatim}
 ##      result.1 result.2 result.3 result.4 result.5
-## res1    21006    21006    21006    21006    21006
-##         21032    21041    21041    21032    21041
-## res2    21057    21066    21075    21066    21075
+## res1    22661    22661    22661    22661    22661
+##         22686    22695    22695    22686    22695
+## res2    22711    22720    22729    22720    22729
 \end{verbatim}
 \begin{alltt}
 \hlcomment{# results are identical}
@@ -745,16 +745,16 @@ cmp[\hlfunctioncall{order}(cmp$elapsed), ]
 \end{alltt}
 \begin{verbatim}
 ##               test replications elapsed relative user.self sys.self user.child sys.child
-## 1         rPar(10)           50   0.562    1.000     0.560    0.000          0         0
-## 2         rRNG(10)           50   1.075    1.913     1.032    0.040          0         0
-## 3         rPar(50)           50   1.919    3.415     1.912    0.004          0         0
-## 4         rRNG(50)           50   3.307    5.884     3.272    0.032          0         0
-## 5        rPar(100)           50   3.669    6.528     3.660    0.008          0         0
-## 6        rRNG(100)           50   6.216   11.060     6.141    0.044          0         0
-## 7    rPar(10, 0.1)           50  50.758   90.317     0.704    0.000          0         0
-## 8    rRNG(10, 0.1)           50  51.357   91.383     1.240    0.048          0         0
-## 9  rPar(100, 0.01)           50  55.244   98.299     4.776    0.048          0         0
-## 10 rRNG(100, 0.01)           50  58.996  104.975     7.869    0.096          0         0
+## 1         rPar(10)           50   0.563    1.000     0.560    0.004          0         0
+## 2         rRNG(10)           50   1.011    1.796     0.988    0.020          0         0
+## 3         rPar(50)           50   2.004    3.560     1.956    0.000          0         0
+## 4         rRNG(50)           50   3.210    5.702     3.160    0.040          0         0
+## 5        rPar(100)           50   3.663    6.506     3.648    0.012          0         0
+## 6        rRNG(100)           50   5.918   10.512     5.889    0.020          0         0
+## 7    rPar(10, 0.1)           50  50.761   90.162     0.708    0.000          0         0
+## 8    rRNG(10, 0.1)           50  51.276   91.076     1.196    0.020          0         0
+## 9  rPar(100, 0.01)           50  54.710   97.176     4.404    0.024          0         0
+## 10 rRNG(100, 0.01)           50  57.125  101.465     6.769    0.060          0         0
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -1013,17 +1013,11 @@ To revert to the latest default behaviour:
 *************************************************************************
 
 CHANGES
-    o the functions RNGseq, getRNG and setRNG have moved into a separate
-    package called rngtools to faciliate their use in other packages,
-    e.g., the NMF package.
-
-*************************************************************************
-*                       Changes in version 1.4.2                        *
-*************************************************************************
-
-CHANGES
-    o doRNG now depends on the package pkgmaker (>= 0.6.2)
+    o doRNG now depends on the package pkgmaker (>= 0.9)
     o improved vignette
+    o most of the general RNG utilities have been incorporated in a new
+    package called rngtools.
+    
 
 *************************************************************************
 *                       Changes in version 1.4.1                        *
@@ -1141,9 +1135,8 @@ attached base packages:
 [1] methods   parallel  stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
- [1] rbenchmark_1.0.0 doRNG_1.4.8      rngtools_1.0     pkgmaker_0.8.17  codetools_0.2-8 
- [6] stringr_0.6.1    digest_0.5.2     doParallel_1.0.1 iterators_1.0.6  foreach_1.4.0   
-[11] knitr_0.8       
+ [1] doRNG_1.5        rngtools_1.0     pkgmaker_0.9.1   codetools_0.2-8  stringr_0.6.1   
+ [6] digest_0.5.2     doParallel_1.0.1 iterators_1.0.6  foreach_1.4.0    knitr_0.8       
 
 loaded via a namespace (and not attached):
 [1] compiler_2.15.2 evaluate_0.4.2  formatR_0.6     plyr_1.7.1      tools_2.15.2   
