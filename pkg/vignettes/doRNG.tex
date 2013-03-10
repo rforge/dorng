@@ -127,7 +127,7 @@
 % REFERENCES
 \usepackage[minnames=1,maxnames=2,backend=bibtex]{biblatex}
 \AtEveryCitekey{\clearfield{url}}
-\bibliography{C:/Users/ShenorrLab.MEDICINE/AppData/Local/Temp/Rpkglib_20fc4cc525ec/doRNG/REFERENCES}
+\bibliography{/tmp/Rpkglib_1def57af461e/doRNG/REFERENCES}
 
 
 \bibliography{Rpackages}
@@ -142,7 +142,7 @@
 \newcommand{\dorng}{\code{\%dorng\%}\xspace}
 
 \title{Using the \code{doRNG} package\\
-{\small \Rpkg{doRNG} -- Version 1.5}}
+{\small \Rpkg{doRNG} -- Version 1.5.3}}
 \author{Renaud Gaujoux}
 
 \begin{document}
@@ -187,7 +187,7 @@ x <- \hlfunctioncall{foreach}(i = 1:5) %dopar% \{
 \hlfunctioncall{unlist}(x)
 \end{alltt}
 \begin{verbatim}
-## [1] 1.852 2.302 3.272 4.903 5.141
+## [1] 1.028 2.274 3.944 4.558 5.609
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -251,6 +251,8 @@ Loops that use this operator are \emph{de facto} reproducible.
 
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: pkgmaker}}
+
+{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: registry}}
 
 {\ttfamily\noindent\itshape\color{messagecolor}{\#\# Loading required package: rngtools}}\begin{alltt}
 
@@ -593,9 +595,9 @@ pid
 \end{alltt}
 \begin{verbatim}
 ##      result.1 result.2 result.3 result.4 result.5
-## res1     8352     8352     8352     8352     8352
-##          8572     8992     8572     8992     8992
-## res2     9028     8356     7536     8356     7536
+## res1     7726     7726     7726     7726     7726
+##          7737     7746     7737     7746     7737
+## res2     7759     7768     7777     7759     7777
 \end{verbatim}
 \begin{alltt}
 \hlcomment{# results are identical}
@@ -736,16 +738,16 @@ cmp[\hlfunctioncall{order}(cmp$elapsed), ]
 \end{alltt}
 \begin{verbatim}
 ##               test replications elapsed relative user.self sys.self user.child sys.child
-## 1         rPar(10)           50    1.24    1.000      1.22     0.00         NA        NA
-## 2         rRNG(10)           50    2.35    1.895      2.17     0.19         NA        NA
-## 3         rPar(50)           50    4.05    3.266      4.04     0.00         NA        NA
-## 4         rRNG(50)           50    7.41    5.976      7.17     0.16         NA        NA
-## 5        rPar(100)           50    7.66    6.177      7.64     0.00         NA        NA
-## 6        rRNG(100)           50   13.02   10.500     12.76     0.12         NA        NA
-## 7    rPar(10, 0.1)           50   51.18   41.274      0.80     0.00         NA        NA
-## 8    rRNG(10, 0.1)           50   52.58   42.403      2.25     0.17         NA        NA
-## 9  rPar(100, 0.01)           50   56.13   45.266      6.10     0.00         NA        NA
-## 10 rRNG(100, 0.01)           50   62.90   50.726     12.11     0.13         NA        NA
+## 1         rPar(10)           50   0.396    1.000     0.396    0.000          0         0
+## 2         rRNG(10)           50   0.755    1.907     0.732    0.020          0         0
+## 3         rPar(50)           50   1.323    3.341     1.320    0.000          0         0
+## 4         rRNG(50)           50   2.259    5.705     2.236    0.020          0         0
+## 5        rPar(100)           50   2.512    6.343     2.508    0.000          0         0
+## 6        rRNG(100)           50   4.263   10.765     4.240    0.016          0         0
+## 8    rRNG(10, 0.1)           50  51.308  129.566     1.212    0.040          0         0
+## 7    rPar(10, 0.1)           50  51.552  130.182     1.481    0.008          0         0
+## 9  rPar(100, 0.01)           50  54.823  138.442     4.492    0.040          0         0
+## 10 rRNG(100, 0.01)           50  59.591  150.482     9.096    0.112          0         0
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -1111,24 +1113,25 @@ CHANGES
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{verbatim}
-R version 2.15.2 (2012-10-26)
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 2.15.3 (2013-03-01)
+Platform: i686-pc-linux-gnu (32-bit)
 
 locale:
-[1] LC_COLLATE=English_United Kingdom.1252  LC_CTYPE=English_United Kingdom.1252   
-[3] LC_MONETARY=English_United Kingdom.1252 LC_NUMERIC=C                           
-[5] LC_TIME=English_United Kingdom.1252    
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
+ [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=C                 LC_NAME=C                  LC_ADDRESS=C              
+[10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] parallel  methods   stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
-[1] doRNG_1.5        rngtools_1.1     pkgmaker_0.10.4  doParallel_1.0.1 iterators_1.0.6 
-[6] foreach_1.4.0    knitr_1.0.5     
+ [1] rbenchmark_1.0.0 codetools_0.2-8  stringr_0.6.2    digest_0.6.3     doRNG_1.5.3     
+ [6] rngtools_1.1.2   pkgmaker_0.13.2  registry_0.2     doParallel_1.0.1 iterators_1.0.6 
+[11] foreach_1.4.0    knitr_1.1       
 
 loaded via a namespace (and not attached):
-[1] codetools_0.2-8 compiler_2.15.2 digest_0.6.0    evaluate_0.4.3  formatR_0.7    
-[6] stringr_0.6.2   tools_2.15.2    xtable_1.7-0   
+[1] compiler_2.15.3 evaluate_0.4.3  formatR_0.7     tools_2.15.3    xtable_1.7-1   
 \end{verbatim}
 \end{kframe}
 \end{knitrout}

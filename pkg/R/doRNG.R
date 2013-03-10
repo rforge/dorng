@@ -77,7 +77,7 @@ library(foreach)
 #' 
 doRNGversion <- local({
 
-	currentV <- "1.4" #as.character(packageVersion('doRNG')) 
+	currentV <- "1.5.3" #as.character(packageVersion('doRNG')) 
 	cache <- currentV
 	function(x){
 		if( missing(x) ) return(cache)
@@ -125,7 +125,7 @@ infoDoRNG <- function (data, item)
 	switch(item
 			, workers = data$backend$info(data$backend$data, "workers")
 			, name = "doRNG"
-			, version = "doRNG 1.1" 
+			, version = "doRNG 1.5.3" 
 			, NULL)
 }
 

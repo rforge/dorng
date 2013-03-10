@@ -1,10 +1,11 @@
-digest
-stringr
-codetools
 rbenchmark
+codetools
+stringr
+digest
 doRNG
 rngtools
 pkgmaker
+registry
 doParallel
 parallel
 iterators
