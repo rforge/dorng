@@ -127,7 +127,7 @@
 % REFERENCES
 \usepackage[minnames=1,maxnames=2,backend=bibtex]{biblatex}
 \AtEveryCitekey{\clearfield{url}}
-\bibliography{/tmp/Rpkglib_1def57af461e/doRNG/REFERENCES}
+\bibliography{/tmp/Rpkglib_62dc5a540655/doRNG/REFERENCES}
 
 
 \bibliography{Rpackages}
@@ -187,7 +187,7 @@ x <- \hlfunctioncall{foreach}(i = 1:5) %dopar% \{
 \hlfunctioncall{unlist}(x)
 \end{alltt}
 \begin{verbatim}
-## [1] 1.028 2.274 3.944 4.558 5.609
+## [1] 1.736 2.031 3.780 4.969 5.727
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -595,9 +595,9 @@ pid
 \end{alltt}
 \begin{verbatim}
 ##      result.1 result.2 result.3 result.4 result.5
-## res1     7726     7726     7726     7726     7726
-##          7737     7746     7737     7746     7737
-## res2     7759     7768     7777     7759     7777
+## res1    25371    25371    25371    25371    25371
+##         25382    25391    25382    25391    25382
+## res2    25404    25413    25422    25404    25413
 \end{verbatim}
 \begin{alltt}
 \hlcomment{# results are identical}
@@ -1126,12 +1126,12 @@ attached base packages:
 [1] parallel  methods   stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
- [1] rbenchmark_1.0.0 codetools_0.2-8  stringr_0.6.2    digest_0.6.3     doRNG_1.5.3     
- [6] rngtools_1.1.2   pkgmaker_0.13.2  registry_0.2     doParallel_1.0.1 iterators_1.0.6 
-[11] foreach_1.4.0    knitr_1.1       
+[1] doRNG_1.5.3      rngtools_1.1.2   pkgmaker_0.14    registry_0.2     doParallel_1.0.1
+[6] iterators_1.0.6  foreach_1.4.0    knitr_1.1       
 
 loaded via a namespace (and not attached):
-[1] compiler_2.15.3 evaluate_0.4.3  formatR_0.7     tools_2.15.3    xtable_1.7-1   
+[1] codetools_0.2-8 compiler_2.15.3 digest_0.6.3    evaluate_0.4.3  formatR_0.7    
+[6] stringr_0.6.2   tools_2.15.3    xtable_1.7-1   
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
