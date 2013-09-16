@@ -169,8 +169,10 @@ doRNG <- function (obj, ex, envir, data){
 getDoBackend <- function(){
     # one has to get the complete set of backend data from within the foreach Namespace
     foreach_ns <- asNamespace('foreach')
-    .foreachGlobals <- get('.foreachGlobals', foreach_ns)
-    getDoPar <- get('getDoPar', foreach_ns)
+#    .foreachGlobals <- get('.foreachGlobals', foreach_ns)
+    .foreachGlobals <- ns_get('.foreachGlobals', foreach_ns)
+#    getDoPar <- get('getDoPar', foreach_ns)
+    getDoPar <- ns_get('getDoPar', foreach_ns)
 	c(getDoPar()
 	, info= if( exists("info", where = .foreachGlobals, inherits = FALSE) ) .foreachGlobals$info else function(data, item) NULL)
 }
