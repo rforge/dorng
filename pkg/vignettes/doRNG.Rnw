@@ -57,10 +57,11 @@ For example, some optimisation algorithms are run multiple times from different
 random starting points, and the result that achieves the least approximation error is selected.
 The \citeCRANpkg{foreach} provides a very convenient way to perform parallel computations, with different parallel environments such as MPI or Redis, using a transparent loop-like syntax:
 
-<<init>>=
+<<init, include = FALSE>>=
 options(width=90)
 library(knitr)
 opts_chunk$set(size = "footnotesize")
+knit_hooks$set(try = pkgmaker::hook_try)
 @
 
 <<foreach>>=
@@ -367,16 +368,12 @@ identical(r1, s1) && identical(r2, s2)
 
 Nested and conditional foreach loops are currently not supported and generate an error:
 
-<<nested_error, error = TRUE, echo = -c(2, 4, 7, 9)>>=
+<<nested_error, error = TRUE, try = TRUE>>=
 # nested loop
-err <- 
 try( foreach(i=1:10) %:% foreach(j=1:i) %dorng% { rnorm(1) } )
-message(err)
 
 # conditional loop
-err <- 
 try( foreach(i=1:10) %:% when(i %% 2 == 0) %dorng% { rnorm(1) } )
-message(err)
 @
 
 In this section, we propose a general work around for this kind of loops, that will 

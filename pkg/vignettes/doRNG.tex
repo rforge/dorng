@@ -118,7 +118,7 @@
 \usepackage[minnames=1,maxnames=2,backend=bibtex]{biblatex}
 \AtEveryCitekey{\clearfield{url}}
 \bibliography{Rpackages}
-\bibliography{/tmp/Rpkglib_20dc7db60180/doRNG/REFERENCES}
+\bibliography{/tmp/Rpkglib_3aca7115c4ca/doRNG/REFERENCES}
 
 
 
@@ -133,7 +133,7 @@
 \newcommand{\dorng}{\code{\%dorng\%}\xspace}
 
 \title{Using the \code{doRNG} package\\
-{\small \Rpkg{doRNG} -- Version 1.5.4}}
+{\small \Rpkg{doRNG} -- Version 1.5.5}}
 \author{Renaud Gaujoux}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
@@ -153,15 +153,7 @@ For example, some optimisation algorithms are run multiple times from different
 random starting points, and the result that achieves the least approximation error is selected.
 The \citeCRANpkg{foreach} provides a very convenient way to perform parallel computations, with different parallel environments such as MPI or Redis, using a transparent loop-like syntax:
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{options}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{90}\hlstd{)}
-\hlkwd{library}\hlstd{(knitr)}
-\hlstd{opts_chunk}\hlopt{$}\hlkwd{set}\hlstd{(}\hlkwc{size} \hlstd{=} \hlstr{"footnotesize"}\hlstd{)}
-\end{alltt}
-\end{kframe}
-\end{knitrout}
+
 
 
 \begin{knitrout}\footnotesize
@@ -182,7 +174,7 @@ The \citeCRANpkg{foreach} provides a very convenient way to perform parallel com
 \hlkwd{unlist}\hlstd{(x)}
 \end{alltt}
 \begin{verbatim}
-## [1] 1.341 2.275 3.915 4.575 5.903
+## [1] 1.604 2.387 3.642 4.840 5.858
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -575,9 +567,9 @@ The following code illustrates this feature using 2 or 3 workers.
 \end{alltt}
 \begin{verbatim}
 ##      result.1 result.2 result.3 result.4 result.5
-## res1     9031     9031     9031     9031     9031
-##          9042     9051     9042     9051     9042
-## res2     9071     9081     9090     9071     9081
+## res1    15757    15757    15757    15757    15757
+##         15786    15795    15786    15795    15786
+## res2    15858    15872    15881    15872    15858
 \end{verbatim}
 \begin{alltt}
 \hlcom{# results are identical}
@@ -687,19 +679,21 @@ Nested and conditional foreach loops are currently not supported and generate an
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# nested loop}
-\hlkwd{message}\hlstd{(err)}
-\end{alltt}
-
-
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Error in foreach(i = 1:10) \%:\% foreach(j = 1:i) \%dorng\% \{ : \\\#\#\ \  nested/conditional foreach loops are not supported yet.\\\#\# See the package's vignette for a work around.}}\begin{alltt}
-\hlcom{# conditional loop}
-\hlstd{err} \hlkwb{<-} \hlkwd{try}\hlstd{(}\hlkwd{foreach}\hlstd{(}\hlkwc{i} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{)} \hlopt{%:%} \hlkwd{when}\hlstd{(i}\hlopt{%%}\hlnum{2} \hlopt{==} \hlnum{0}\hlstd{)} \hlopt{%dorng%} \hlstd{\{}
+\hlkwd{try}\hlstd{(}\hlkwd{foreach}\hlstd{(}\hlkwc{i} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{)} \hlopt{%:%} \hlkwd{foreach}\hlstd{(}\hlkwc{j} \hlstd{=} \hlnum{1}\hlopt{:}\hlstd{i)} \hlopt{%dorng%} \hlstd{\{}
     \hlkwd{rnorm}\hlstd{(}\hlnum{1}\hlstd{)}
 \hlstd{\})}
 \end{alltt}
 
 
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Error in foreach(i = 1:10) \%:\% when(i\%\%2 == 0) \%dorng\% \{ : \\\#\#\ \  nested/conditional foreach loops are not supported yet.\\\#\# See the package's vignette for a work around.}}\end{kframe}
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: nested/conditional foreach loops are not supported yet.\\\#\# See the package's vignette for a work around.}}\begin{alltt}
+\hlcom{# conditional loop}
+\hlkwd{try}\hlstd{(}\hlkwd{foreach}\hlstd{(}\hlkwc{i} \hlstd{=} \hlnum{1}\hlopt{:}\hlnum{10}\hlstd{)} \hlopt{%:%} \hlkwd{when}\hlstd{(i}\hlopt{%%}\hlnum{2} \hlopt{==} \hlnum{0}\hlstd{)} \hlopt{%dorng%} \hlstd{\{}
+    \hlkwd{rnorm}\hlstd{(}\hlnum{1}\hlstd{)}
+\hlstd{\})}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: nested/conditional foreach loops are not supported yet.\\\#\# See the package's vignette for a work around.}}\end{kframe}
 \end{knitrout}
 
 
@@ -1064,13 +1058,12 @@ attached base packages:
 [1] methods   parallel  stats     graphics  grDevices utils     datasets  base     
 
 other attached packages:
- [1] stringr_0.6.2    rbenchmark_1.0.0 digest_0.6.3     codetools_0.2-8  doRNG_1.5.4     
- [6] rngtools_1.2.2   pkgmaker_0.17    registry_0.2     doParallel_1.0.3 iterators_1.0.6 
-[11] foreach_1.4.1    knitr_1.4.9     
+[1] doRNG_1.5.5      rngtools_1.2.3   pkgmaker_0.17.3  registry_0.2     doParallel_1.0.3
+[6] iterators_1.0.6  foreach_1.4.1    knitr_1.4.9     
 
 loaded via a namespace (and not attached):
-[1] compiler_3.0.1 evaluate_0.4.7 formatR_0.9    highr_0.2.1    tools_3.0.1   
-[6] xtable_1.7-1  
+[1] codetools_0.2-8 compiler_3.0.1  digest_0.6.3    evaluate_0.4.7  formatR_0.9    
+[6] highr_0.2.1     stringr_0.6.2   tools_3.0.1     xtable_1.7-1   
 \end{verbatim}
 \end{kframe}
 \end{knitrout}

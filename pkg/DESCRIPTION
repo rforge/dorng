@@ -2,7 +2,7 @@ Package: doRNG
 Type: Package
 Title: Generic Reproducible Parallel Backend for foreach
     Loops
-Version: 1.5.4
+Version: 1.5.5
 Date: 2013-09-12
 Author: Renaud Gaujoux
 Maintainer: Renaud Gaujoux <renaud@mancala.cbio.uct.ac.za>
@@ -18,9 +18,9 @@ License: GPL (>=2)
 LazyLoad: yes
 VignetteBuilder: knitr
 Depends:
-    R (>= 2.14),
+    R (>= 3.0.0),
     foreach,
-    rngtools
+    rngtools (>= 1.2.3)
 Imports:
     stats,
     iterators,
