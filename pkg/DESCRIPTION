@@ -24,7 +24,7 @@ Depends:
 Imports:
     stats,
     iterators,
-    pkgmaker (>= 0.17)
+    pkgmaker (>= 0.17.4)
 Suggests:
     doParallel,
     doMPI,
